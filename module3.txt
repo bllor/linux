@@ -92,7 +92,7 @@ Cd : root폴더로 이동? 사용자 명이 입력된 폴더로 이동한다.
 Ex)
 첫번째 문자는 파일의 유형을 말해준다.
 d는 디렉터리를 나타낸다.
-l은 링크라는 뜻
+l은 원본 파일을 대신해서 원본 파일을 다른 파일이름으로 지정한 것
 -처럼 아무것도 없으면 일반 텍스트 파일
 
 drwxr-xr-x 5 root root      4096 Jan 30 12:17 grub
@@ -169,6 +169,62 @@ a와 b라는 폴더가 만들어진다.
 *
 Ls -ltr : 마지막으로 수정된 파일이 제일 밑에 출력된다.
 Ls -l : 파일을 알파벳 순으로 나열
+[2/6]
+-----------------------------------------------------------
+디렉터리 복사하기
+
+파일 복사 시 : cp
+디렉터리 복사시 : cp -r [폴더명] [복사하고 싶은 폴더의 절대경로]
+
+-----------------------------------------------------------
+파일 및 디렉터리 찾기
+
+1.find
+Find . -name "fileName"을 할 경우 fileName의 절대위치를 알 수 있다. 
+Find / -name "fileName" 전체 시스템(루드 디렉터리)에서 파일 검색
+
+find[option] path [expression]으로 다양하게 사용할 수 있다.
+[1]option
+-P : 심볼릭 링크를 따라가지 않고 심볼릭 링크 자체 정보 사용
+-L : 심볼릭 링크에 연결된 파일 정보 사용
+-H : 심볼링 링크를 따라가지 않으나, command line argument를 처리할 땐 예외
+-D : 디버그 메세지 출력
+*심볼릭 링크 : window의 바로가기 같은 기능 == 특정 파일이나 디렉터리에 대한 참조를 포함하는 파일
+
+
+[2]expression
+-name : 지정된 문자열 패턴에 해당하는 파일 검색
+-empty : 빈 디렉터리 또는 크기가 0인 파일 검색
+-delete : 검색된 파일 또는 디렉터리 삭제 
+-exec : 검색된 파일에 대해 지정된 명령 실행
+-path : 지정된 문자열 패턴에 해당하는 경로에서 검색
+-print : 검색 결과를 출력, 검색 항목은 newline으로 구분
+-print0 : 검색 결과를 출력, 검색 항목은 null로 구분
+-size : 파일 크기를 사용하여 파일 검색
+-type : 지정된 파일 타입에 해당하는 파일 검색
+  ㄴ b : block special
+  ㄴ c : character special
+  ㄴ d : directory
+  ㄴ f : regular file
+  ㄴ I : symbolic link
+  ㄴ p : FIFO
+  ㄴ s : socket
+  Ex ) "dog"라는 폴더 검색할 경우 find . -name "dog" -type d
+-mindepth: 검색을 시작할 하위 디렉터리 최소 깊이 지정 
+-maxdepth: 검색할 하위 디렉터리의 최대 깊이 지정
+-atime : 파일 접근 시각을 기준으로 파일 검색
+-btime : 파일 내용 및 속성 변경 시각을 기준으로 파일 검색
+-ctime : 파일의 데이터 수정시각을 기준으로 파일 검색
+
+[3]표현식의 연산자
+(expression) : 표현식의 우선순위 선정
+!expression : expression 결과에 not 연산
+Expression -a expression : and 연산
+Expression -o expression : or 연산
+
+2.locate
+Locate 이름
+이름의 경로, 폴더일 경우 안에 존재하는 모든 내용을 같이 보여준다.
 
 
 
