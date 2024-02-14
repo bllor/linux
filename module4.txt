@@ -1,0 +1,219 @@
+Module4
+
+
+--------------------
+Chmod 숫자로 명령하기 
+0: 권한없음
+1 실행
+2 쓰기
+4 읽기
+5 읽기+실행
+7 읽기+쓰기+실행
+
+chmod751 파일명
+user는 모든 권한
+그룹은 읽기 실행
+다른 사용자는 실행만 가능
+
+------------------------
+소유권
+소유권 변경은 root에서 할 수 있다.
+파일이나 디렉터리에 소유권이 있어야 쓰거나 삭제할 수 있음
+chown개인
+chgrp 그룹
+
+소유권변경
+chown 사용자 파일or디렉터리명
+사용자로 파일이나 디렉터리의 소유권이 변경된다
+
+------------------------
+Access control list
+접근 제어 목록
+유닉스 파일 허가를 보호하기 위해 만들어짐
+같은 그룹이 아닌 사람을 그룹에 넣지 않고 특정장소에 권한을 주는 방법
+
+Acl assign : setfacl
+Acl remove : getfacl
+
+Ex)
+user a 에게 허가하는 방법
+Setfacl -m u:a:rwx /path/to/file
+a가 해당 파일에 읽기, 쓰기, 실행 권한을 가짐
+
+group gang에게 읽기, 쓰기 허가하는 방법
+setfacl -m g:gang:rw /path/to/file
+그룹 gang이 해당 file에 대해 읽기, 쓰기 권한을 가진다.
+
+디렉터리 하위파일까지 권한을 주기
+setfacl -rm "entry" /path/to/dir
+
+권한제거하기
+setfacl -x u:user /path/to/file
+
+모든 접근 금지
+setfacl -b path/to/file
+모든 사람이 파일에 접근하지 못한다.
+
+
+getfacl tx tx파일의 소유주, 권한을 확인할 수 있다.
+
+*shell return 127 --> q! : vi편집기 강제 종료
+
+
+
+------------------------
+help commands
+
+whatis command
+command --help
+man command
+위의 명령어들은 command에 해당하는 명령어들의 메뉴얼을 보여준다.
+
+
+------------------------
+TAB 완성 및 위쪽 화살표 키
+
+TAB을 누르면 자동완성이 된다. history로 이동하려면 
+cd hi+tab을 하게 디면 hi로 시작하는 파일들이 나온다.
+명령어도 tab을 누르면 추천 명령어가 출력된다.
+
+
+위쪽 화살표를 누르면 이전에 했던 명령어가 출력된다.
+
+------------------------
+파일에 텍스트 추가하기
+
+1.vi
+파일을 생성하고 텍스트 메세지를 출력
+
+2.> or >>
+this is redirect command
+이 강의에서는 2번을 다룰 예정
+
+3.echo > or >>
+
+echo "text"를 할 경우, text가 출력이 된다.
+echo "text" > file_name을 할 경우, file_name에 text의 내용이 저장이 된다.
+만약 file_name에 내용이 있다면 "text"로 덮어쓰기가 된다.
+echo "text" >> file_name을 하게 될 경우, 내용이 추가가 된다.
+
+*
+ls -ltr > file_name
+ls -ltr을 한 결과가 file_name에 저장이 된다.
+
+cat jerry > listingofdir
+listingofdir에 jerry의 내용이 입력된다.
+
+------------------------
+입력 및 출력 리다이렉트
+
+
+stdin  standard input  스크립트 as 0
+stdout standard output as 1
+stderr standard error. as 2
+
+1.Output
+>  :덮어쓰기
+>> :추가하기
+
+
+2.input
+cat < file_name
+file_name에 있는 내용을 볼 수 있다.
+
+3.error
+에러 메시지를 출력
+ls -l /root 2>file_name
+ls -l /root를 할 때 발생하는 에러 메시지가 file_name에 저장된다.
+
+
+*
+숨겨진 파일은 파일명 앞에 .이 있다.
+
+
+------------------------
+파일로 표준 출력
+
+
+tee 명령어를 수행할 경우, 파일이 저장도 되고, 출력도 된다.
+
+echo "text" | tee file_name
+file_name에 text가 저장이 되면서 text가 출력이 된다.
+파일이 존재할 경우 덮어쓰기가 되는데,
+echo "text" | tee -a file_name를 하게 될 경우, text의 내용이 추가가 된다.
+
+echo "text" | tee file_name1 file_name2 file_name3
+file_name 1,2,3가 text라는 내용을 가진 채 생성된다.
+
+
+*
+wc -c file_name
+file_name의 글자수를 출력한다.
+
+------------------------
+pipe (|)
+명령어의 결과를 다른 명령어로 보내는 역할
+command1 [arugment] | command2 [arugment]
+command1의 결과를 command2로 보낸다.
+
+ex) ls -l |more
+ls -l의 결과를 페이징처리를 하여 보여준다.
+more : 페이징 처리를 해준다.
+
+ls -l | tail -10
+ls -l 결과의 마지막 10줄을 보여준다.
+tail : 마지막 10줄을 보여준다.
+
+------------------------
+파일 유지 관리 명령
+
+cp(copy) : 파일 복사
+cp file_name1 file_name2
+file_name1의 내용을 복사하여 file_name2에 복사한다.
+cp file_name1 path/to/file_name2
+file_name1의 내용을 복사하여 path/to에 file_name2을 생성한 후, 복사한 내용을 추가한다.
+
+rm(remove) : 파일 삭제
+
+mv(move) : 파일 이동
+
+mv file_name1 file_name2 
+file_name1을 file_name2로 이름을 바꾼다
+mv file_name1 절대경로/directory 절대경로/directory로 file_name1을 이동한다.
+
+rmdir or rm -r 디렉터리 삭제
+rm -Rf = 하위 목록과 모든 내용들을 다지울 때 사용한다.
+
+
+------------------------
+파일 표시 명령
+cat
+파일 전체의 내용을 볼 수 있다.
+
+less
+큰 텍스트 파일을 한 번에 보여준다.
+space bar : 한 페이지 씩 보여준다
+j or 아래 방향키: 한줄씩 내려간다
+k or 위쪽 방향키 : 한줄씩 올라간다.
+
+
+more
+출력되는 내용을 페이징 처리를 해준다.
+head
+출력되는 내용 중 상단에 있는 내용을 보여준다.
+
+head -2
+제일 위의 2줄의 내용만 출력한다.
+
+tail
+출력되는 내용 중 하단에 있는 내용을 보여준다.
+
+
+
+
+
+
+
+
+
+
