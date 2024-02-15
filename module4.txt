@@ -210,8 +210,26 @@ tail
 
 
 
+------------------------
+cut
 
+cut -c1 file_name
+file_name의 내용 각 줄의 첫번째 글자만 출력한다.
 
+cut -c1,2,4 file_name
+file_name의 각 줄의 첫번째,두번째, 네번째 문자를 출력한다.
+
+cut -c1-3 file_name
+file_name의 각 줄의 첫번째~3번째 문자를 출력한다.
+
+cut -d: -f 6 /etc/passwd
+passwd 파일에서 :기준으로 분류하되, 각 줄에서 6번 째에 해당하는 문자열을 가져온다.
+
+cut -d: -f 6-7 /etc/passwd
+passwd 파일에서 :기준으로 분류하되, 각 줄에서 6~7번 째에 해당하는 문자열을 가져온다.
+
+ls -l | cut c2-4
+ls -l 명령어에서 각 줄에서 2~4번째 문자를 가져온다.
 
 
 
