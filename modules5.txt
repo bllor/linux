@@ -70,3 +70,33 @@ useradd -g superheros -s /bin/bash -c "ironman character" -m -d /home/ironman ir
 그룹은 superheros
 
 사용자 비밀번호 지정 passwd userName
+
+
+-----------------------------------
+switch 사용자 및 sudo 엑세스
+
+su - username : username으로 변경한다.
+sudo command : root권한으로 해당 명령어를 실시한다.
+
+-----------------------------------
+사용자 모니터링(who, last, w, id)
+사용자 모니터링을 사용할 때 쓰는 명령어
+
+who
+누가 로그인 했는지, 언제 로그인 했는지 알 수 있다.
+
+last
+첫날부터 로그인한 모든 사용자의 정보를 보여준다.
+시스템을 재부팅하거나 껐을 때의 기록들이 남아있다.
+
+w
+로그인 타임이나 시간, 어떤 프로세스를 사용했는지 보여준다.
+
+finger
+사용자의 흔적 추적
+어디서 오고, 어떤 명령어를 사용하는지
+yum install finger -y or yum install pinky -y
+명령어가 바뀌었을 수 있으니 두개를 번갈아 가며 사용
+
+id
+사용자들의 id를 보여준다.
