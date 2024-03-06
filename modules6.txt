@@ -1,0 +1,22 @@
+modules6
+
+--------------------------------------------
+커널
+
+하드웨어와 소프트웨어의 인터페이스
+
+hardware(cpu,memory)-kernel(program)-shell(gui,bash,csh)-application(browser)-user
+로 구성되어있다.
+운영체제는 kernel+shell에 속하며 리눅스 mac, window가 여기에 속한다.
+software는 shell+application
+
+--------------------------------------------
+셸
+셸은 유저와 커널/운영체제를 연결해주는 역할
+명령어를 입력하여 사용하는 것이 쉘
+
+셸찾는법
+echo $0 or cat /etc/shells
+
+windows gui linux sh,bash등이 shell에 속한다.
+
