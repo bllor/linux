@@ -1,0 +1,9 @@
+module 7
+
+네트워크 파일 및 명령
+
+/etc/nsswitch.conf - 호스트 이름을 ip주소로 설정하는 곳을 알려주는 시스템
+/etc/hosts -- ip주소를 정의하는 곳
+/etc/sysconfig/network - 모든 네트워크, 모든 서브넷 마스크와 게이트웨이에서 ip주소를 지정하는 곳
+/etc/sysconfig/network-scripts/ifcfg-nic - 해당 인터페이스(nic)의 ip주소와 변경여부를 지정할 수 잇는 곳
+/etc/resolv.conf 호스트의 이름을 정할 수 있는 곳 

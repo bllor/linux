@@ -1,0 +1,33 @@
+생활코딩 포트
+web : 80
+ssh : 22
+포트를 사용
+
+server에 들어가기 위한 번호(문)
+ssh로 들어가기 위해서는 22번 문으로 들어가야 한다.
+ssh는 22번에서 대기하고 있는데, 대기하고 있는 것을 listen이라고 한다.
+config파일에 port번호가 있는데, port번호를 수정한 다음 restart를 하면 변경된 포트로 들어갈 수 있다.
+
+----------------------------------------------------------------
+port forwarding
+이터넷 수업?
+
+라우터(공유기)에 있는 ip를 public ip address
+공유기에서 받아서 사용되는 ip(노트북,핸드폰 등)를 private ip address
+public ip addres로 외부에서 접속할 수 있지만, private ip address에 들어갈 수 없다.
+
+하지만 포트를 이용하여 private ip address로 접속이 가능하다.
+public ip address :0.0.0.1 -p: 9090
+private ip address: 2.2.2.2 -p : 87
+일 때, 0.0.0.1:9090으로 접속되면 2.2.2.2:87로 연결해라 처럼 포트를 이용하여 연결할 수 있다.
+
+공유기 안쪽에서 사용하는 ip를 default gateway라고 한다.
+
+default gateway를 보는 법 : ip route를 치면 된다.
+nat 라우터 관리 - 포트포워드 설정
+내부아이피주소 - 외부와 연결할 내부 ip주소
+외부포트 - 외부의 사용자가 접근할 포트번호
+내부포트 - 외부 사용자와 연결할 내부 포트 번호
+
+라우터의 ip를 알아내는 방법
+curl http://ipinfo.io/ip -- 공개 ip를 알아내는 방법
