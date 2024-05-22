@@ -78,4 +78,5 @@ bash를 사용할 때,
 alias l = 'ls -al'
 l을 누르면 ls -al이 실행이 된다.
 
+alias는 별명을 나타낸다.
 
