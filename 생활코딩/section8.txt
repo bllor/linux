@@ -1,0 +1,28 @@
+section8 group
+
+특정한 사람들에게 권한을 주고 싶을 때 group에 만들어 넣은 뒤, 권한을 준다.
+
+그룹을 만들 때 사용
+groupadd groupname
+관리자만 사용가능
+
+
+유저를 그룹에 추가
+usermod -a|c|d -G groupname username
+
+
+
+사용자를 생성하면서 그룹에 넣을 때
+useradd -G {groupname} username
+다시 접속해야지 수정사항이 반영된다.
+
+디렉터리의 그룹변경하기
+sudo dirname owner:groupname . 
+
+
+* 
+ls -l이나 ls -al을 할 경우
+. 또는 .. 이 뜨는데 .는 현재 디렉터리의 권한을 뜻한다.
+
+!!는 바로 이전에 실행된 명령어를 가져온다.
+
