@@ -1,0 +1,13 @@
+section 11 rsync
+remote sync
+sync : a컴퓨터의 변동사항이 b에 적용되고, b컴퓨터의 변동사항이 a에 적용이 된다.
+
+rsync -a dir1 dir2 dir2에 dir1의 파일을 복사하여 보낸다.
+dir1과 현재 폴더의 파일이 같을 경우 복사하지 않는다.
+
+*
+touch test{1...10}
+test1부터 10까지의 파일을 만든다.
+
+
+
