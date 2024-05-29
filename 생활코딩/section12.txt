@@ -1,0 +1,25 @@
+section12 
+ssh키를 이용하여 로그인하기
+ssh키 만들기 
+ssh-keygen <--.ssh/id_rsa 파일에 아주 강력한 암호가 저장이됨.
+id_rsa.pub <-- public key 
+private key는 보이면 안된다.
+로그인하고자 하는 컴퓨터에 .ssh폴더의 authorized_keys에
+id_rsa.pub의 내용을 복사해서 넣으면 된다.
+복사할 때 실수가 있을 수 있으므로 ssh-copy-id username@ip 를 하게될 경우 해당 ip의 username에
+키가 저장이 된다.
+
+
+자동로그인이 되어있으면 cron을 통해 rsync를 실행하여 자동으로 백업할 수 있다.
+
+ssh의 공개키와 비공개키의 동작원리
+rsa : 비대칭 암호화기법의 대표적인 기술
+encrypt : 암호화하다
+private키를 통해 정보를 암호화하고, public키를 통해 정보를 복호화한다.
+public key와 private키를 가지고 있는 ip에서 public key를 가지고 있는 다른 ip에 접속할 수 있다.
+
+ssh-client는 private key, public key를 가지고 있고,
+ssh-server는 public key를 가지고 있다.
+클라이언트는 서버에 접속요청을 할 경우, 서버는 클라이언트에게 랜덤키를 보낸다.
+클라이언트는 랜덤키를 암호화하여 서버에 보낸다.
+서버는 암호화된 랜덤키를 복호화하여 두 개가 같은 경우 접속을 허용시켜준다.
